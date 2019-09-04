@@ -1,7 +1,31 @@
 import React from "react";
+import BotSpecs from "./BotSpecs.js"
 
-const BotCard = props => {
-  const { bot } = props;
+class BotCard extends React.Component {
+  state = {
+    clicked: false
+  }
+  showSpecs = () => {
+  this.setState({
+    clicked: !this.state.clicked
+  })
+}
+
+  goBack = () => {
+    this.setState({
+      clicked: false
+    })
+  }
+
+  handleClick = (bot) => {
+    this.setState({
+      clicked: false
+    })
+    this.props.addToArmy(bot)
+    
+  }
+  render() {
+  const bot = this.props.bot;
 
   let botType;
 
@@ -20,11 +44,13 @@ const BotCard = props => {
   }
 
   return (
-    <div className="ui column">
+    
+    <div  className="ui column">
+  
       <div
         className="ui card"
         key={bot.id}
-        onClick={() => console.log("add code to connect event listener")}
+        onClick={this.showSpecs}
       >
         <div className="image">
           <img alt="oh no!" src={bot.avatar_url} />
@@ -54,9 +80,17 @@ const BotCard = props => {
           </span>
         </div>
       </div>
+      {this.state.clicked? <BotSpecs 
+      goBack ={this.goBack}
+      bot={this.props.bot}
+      handleClick ={this.handleClick}
+      />:null}
+    
     </div>
+    
   );
 
-};
+}
+}
 
 export default BotCard;
