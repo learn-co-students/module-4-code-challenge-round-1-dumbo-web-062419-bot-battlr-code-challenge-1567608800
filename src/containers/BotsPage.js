@@ -1,12 +1,14 @@
 import React from "react";
 import BotCollection from "./BotCollection"
 import YourBotArmy from './YourBotArmy'
+import BotSpecs from '../components/BotSpecs'
 
 class BotsPage extends React.Component {
 
   state = {
     botList: [],
-    botArmyList: []
+    botArmyList: [],
+    showBotSpec: false
   }
 
   componentDidMount() {
@@ -32,6 +34,12 @@ class BotsPage extends React.Component {
 
   }
 
+  showBotSpec = () => {
+    this.setState({
+      showBotSpec: !this.state.showBotSpec
+    })
+  }
+
   render() {
 
     return (
@@ -44,8 +52,10 @@ class BotsPage extends React.Component {
 
         <BotCollection
           botList={this.state.botList}
-          handleClick={this.addBotToArmy}
+          // handleClick={this.addBotToArmy}
+          handleClick={this.showBotSpec}
         />
+
 
       </React.Fragment>
     );
