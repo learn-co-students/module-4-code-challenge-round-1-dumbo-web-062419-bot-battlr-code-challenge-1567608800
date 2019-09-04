@@ -4,7 +4,7 @@ import BotSpecs from "../components/BotSpecs";
 
 
 class YourBotArmy extends React.Component {
-  //your bot army code here...
+
 
   render(){
     return (

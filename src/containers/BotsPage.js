@@ -6,7 +6,8 @@ class BotsPage extends React.Component {
 
   state = {
     allBots: [],
-    myBots: []
+    myBots: [],
+    botArmy: []
   }
 
   componentDidMount() {
@@ -17,24 +18,37 @@ class BotsPage extends React.Component {
     }))
   }
 
-  addBot = (bot) => {
-    if (this.state.myBots.includes(bot)) {
+  /// ADDS BOT TO BOT ARMY
+  // addBot = (bot) => {
+  //   if (this.state.myBots.includes(bot)) {
+  //     alert("You already got this bot!")
+  //   }
+  //   else { 
+  //     this.setState({
+  //       myBots: [...this.state.myBots, bot]
+  //     })
+  //   }
+  // }
+
+  /// REMOVES BOT FROM BOT ARMY  
+  // removeBot = (bot) => {
+  //   let copiedBots = [...this.state.myBots]
+  //   let index = copiedBots.indexOf(bot)
+  //   copiedBots.splice(index, 1)
+  //   this.setState({
+  //     myBots: copiedBots
+  //   })
+  // }
+
+  addBotToBotArmy = (bot) => {
+    if (this.state.botArmy.includes(bot)) {
       alert("You already got this bot!")
     }
     else { 
       this.setState({
-        myBots: [...this.state.myBots, bot]
+      botArmy: [...this.state.botArmy, bot]
       })
     }
-  }
-
-  removeBot = (bot) => {
-    let copiedBots = [...this.state.myBots]
-    let index = copiedBots.indexOf(bot)
-    copiedBots.splice(index, 1)
-    this.setState({
-      myBots: copiedBots
-    })
   }
 
   render() {
@@ -42,11 +56,16 @@ class BotsPage extends React.Component {
       <div>
         <BotCollection 
           bots={this.state.allBots}
-          clickHandler={this.addBot}
+          addToArmy={this.addBotToBotArmy}
+          /// HANDLER TO ADD BOT
+          // clickHandler={this.addBot}
         />
         <YourBotArmy 
-          bots={this.state.myBots}
-          clickHandler={this.removeBot}
+          // bots={this.state.myBots}
+          bots={this.state.botArmy}
+
+          /// HANDLER TO REMOVE BOT
+          // clickHandler={this.removeBot}
         />
       </div>
     );
