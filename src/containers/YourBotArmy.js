@@ -16,6 +16,8 @@ class YourBotArmy extends React.Component {
       <div className="ui segment inverted olive bot-army">
         <div className="ui five column grid">
           <div className="row bot-army-row">
+          <h1> To add Bot Click on Image</h1>
+          <p>R and A, To see Message - Click SPEC Button</p>
           {botComponent}
 
           </div>

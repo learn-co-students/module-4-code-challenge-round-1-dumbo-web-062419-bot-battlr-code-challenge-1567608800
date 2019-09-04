@@ -24,15 +24,15 @@ const BotCard = props => {
       <div
         className="ui card"
         key={bot.id}
-        onClick={props.handleClick ? () => props.handleClick(props.bot) : () => props.removeArmy(props.bot)}
       >
-        <div className="image">
+        <div className="image" onClick={props.handleClick ? () => props.handleClick(props.bot) : () => props.removeArmy(props.bot)}>
           <img alt="oh no!" src={bot.avatar_url} />
         </div>
         <div className="content">
           <div className="header">
             {bot.name} {botType}
           </div>
+          <button onClick={props.showBotSpecs}> SPECS </button>
 
           <div className="meta text-wrap">
             <small>{bot.catchphrase}</small>
