@@ -1,7 +1,7 @@
 import React from "react";
 
 const BotCard = props => {
-  const { bot } = props;
+  const { bot, addToArmy, removeFromArmy } = props;
 
   let botType;
 
@@ -24,7 +24,8 @@ const BotCard = props => {
       <div
         className="ui card"
         key={bot.id}
-        onClick={() => console.log("add code to connect event listener")}
+        value={bot}
+        onClick={(e) => { bot.enlisted ? removeFromArmy(e.target.src) : addToArmy(e.target.src)} }
       >
         <div className="image">
           <img alt="oh no!" src={bot.avatar_url} />
