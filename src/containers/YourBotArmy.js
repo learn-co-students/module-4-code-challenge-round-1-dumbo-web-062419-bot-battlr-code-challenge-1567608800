@@ -4,7 +4,11 @@ import BotCard from "../components/BotCard";
 class YourBotArmy extends React.Component {
   //your bot army code here...
 
+
   render(){
+    
+    
+
     return (
       <div className="ui segment inverted olive bot-army">
         <div className="ui five column grid">
@@ -20,3 +24,4 @@ class YourBotArmy extends React.Component {
 };
 
 export default YourBotArmy;
+
