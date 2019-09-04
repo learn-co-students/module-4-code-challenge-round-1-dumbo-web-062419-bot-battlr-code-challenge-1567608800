@@ -15,30 +15,37 @@ class BotsPage extends React.Component {
     fetch(API)
       .then(res => res.json())
       // .then(allBots => console.log(allBots))
-      .then(allBots => this.setState({ allBots: allBots }))
+      .then(allBots => {
+        allBots.map(bot => {bot.enlisted = false})
+        this.setState({ allBots: allBots })
+      })
   }
 
   toggleEnlistBot = (bot) => {
     // console.log("enlistBot() doing it's thing!");
-    if(!this.state.myBotArmy.includes(bot)){
+    if(!this.state.myBotArmy.includes(bot) && bot.enlisted === false){
       // console.log("Enlisting this bot: ", bot);
+      bot.enlisted = !bot.enlisted
       this.setState({ myBotArmy: [...this.state.myBotArmy, bot] },
-        // console.log("What bots do I have?", this.state.myBotArmy)
+        console.log("What bots do I have?", this.state.myBotArmy)
     )} else {
-      // alert("You already enlisted this bot")
-      let myBotArmyCopy = [...this.state.myBotArmy]
-      let botRemoveIndex
-      // console.log("myBotArmyCopy: ", myBotArmyCopy);
-      for (let i = 0; i < myBotArmyCopy.length; i++){
-        if(myBotArmyCopy[i] === bot){
-          botRemoveIndex = i
+      if(bot.enlisted === true){
+        bot.enlisted = !bot.enlisted
+        // alert("You already enlisted this bot")
+        let myBotArmyCopy = [...this.state.myBotArmy]
+        let botRemoveIndex
+        // console.log("myBotArmyCopy: ", myBotArmyCopy);
+        for (let i = 0; i < myBotArmyCopy.length; i++){
+          if(myBotArmyCopy[i] === bot){
+            botRemoveIndex = i
+          }
         }
+        // console.log("botRemoveIndex: ", botRemoveIndex);
+        myBotArmyCopy.splice(botRemoveIndex, 1)
+        this.setState({ myBotArmy: myBotArmyCopy },
+          console.log("Updated bot army", this.state.myBotArmy)
+        )
       }
-      // console.log("botRemoveIndex: ", botRemoveIndex);
-      myBotArmyCopy.splice(botRemoveIndex, 1)
-      this.setState({ myBotArmy: myBotArmyCopy },
-        console.log("Updated bot army", this.state.myBotArmy)
-      )
     }
   }
 
