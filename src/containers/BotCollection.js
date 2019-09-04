@@ -10,6 +10,26 @@ class BotCollection extends React.Component {
     this.props.addRobot(bot)
   }
 
+  changeSpecs = (robot) => {
+    if(robot.state.isClicked === true){
+
+        const robot = <BotSpecs
+          key={robot.id}
+          bot={robot}
+          changeSpecs={this.changeSpecs}
+          addRobot={this.handleAddingRobot}
+          />
+
+        return (
+          <div className="ui four column grid">
+            <div className="row">
+              {robot}
+            </div>
+          </div>
+        );
+    }
+  }
+
   render(){
 
     const robots = this.props.data.map(robot =>

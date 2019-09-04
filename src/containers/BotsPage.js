@@ -44,6 +44,8 @@ class BotsPage extends React.Component {
           data={this.state.allRobots}
           addRobot={this.enlistNewRobot}
         />
+
+
       </div>
     );
   }

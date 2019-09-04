@@ -13,6 +13,10 @@ class BotCard extends Component {
     this.props.addRobot(this.props.bot)
   }
 
+  handleStateChange = () => {
+    this.setState({isClicked: !this.state.isClicked})
+  }
+
 
 render(){
   const { bot } = this.props;
