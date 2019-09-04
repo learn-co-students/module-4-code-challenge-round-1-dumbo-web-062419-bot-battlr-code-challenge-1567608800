@@ -39,7 +39,7 @@ Work on fetching data from this API: https://bot-battler-api.herokuapp.com/api/v
 
 #### 4. Refactor
 
-Now that you have some of the functionality of your app, it's time to refactor the code. Rather than enlisting the bot into the army, clicking on the card should instead display a show view (`BotSpecs`) for that bot, which should replace `BotsCollection`. BotSpecs should have two buttons: one to go back to the list view and another to enlist that bot.
+Now that you have some of the functionality of your app, it's time to refactor the code. Rather than enlisting the bot into the army, clicking on the card should instead display a show view (`BotSpecs`) for that bot, which should replace `YourBotArmy`. BotSpecs should have two buttons: one to go back to the list view and another to enlist that bot.
 
 This refactored version should look like the following:
 

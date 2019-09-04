@@ -16,8 +16,9 @@ class BotsPage extends React.Component {
   }
 
   addBotToArmy = (bot) => {
+
     this.setState({
-      botArmyList: [...this.state.botArmyList, bot]
+      botArmyList: Array.from(new Set([...this.state.botArmyList, bot]))
     })
   }
 
@@ -36,14 +37,14 @@ class BotsPage extends React.Component {
     return (
       <React.Fragment>
 
-        <BotCollection
-          botList={this.state.botList}
-          handleClick={this.addBotToArmy}
-        />
-
         <YourBotArmy
           botArmyList={this.state.botArmyList}
           handleClick={this.deleteBotFromArmy}
+        />
+
+        <BotCollection
+          botList={this.state.botList}
+          handleClick={this.addBotToArmy}
         />
 
       </React.Fragment>
