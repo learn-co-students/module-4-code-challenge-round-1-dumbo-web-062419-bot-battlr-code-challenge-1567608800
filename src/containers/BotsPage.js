@@ -1,12 +1,14 @@
 import React from "react";
 import BotCollection from "./BotCollection"
 import YourBotArmy from "./YourBotArmy"
+import BotSpecs from "../components/BotSpecs"
 
 class BotsPage extends React.Component {
   //start here with your code for step one
   state = {
     allBots: [],
-    yourBots: []
+    yourBots: [],
+    show: null
   }
 
   componentDidMount() {
@@ -16,13 +18,23 @@ class BotsPage extends React.Component {
   }
 
   addToArmy = (bot) => {
+    // if the bot is not already in the army (we cant find it) then add it
     if (!this.state.yourBots.find(b => b.id === bot.id)) {
-      this.setState({yourBots: [...this.state.yourBots, bot]})
+      this.setState({yourBots: [...this.state.yourBots, bot], show: null})
     }
   }
 
   removeFromArmy = (bot) => {
+    // your bots will be updated having removed the bot you clicked on
     this.setState({yourBots: this.state.yourBots.filter(b => b.id !== bot.id) })
+  }
+
+  handleShow = (bot) => {
+    this.setState({show: bot})
+  }
+
+  handleGoBack = () => {
+    this.setState({show: null})
   }
 
   render() {
@@ -30,7 +42,12 @@ class BotsPage extends React.Component {
       <div>
         {/* put your components here */}
         <YourBotArmy bots={this.state.yourBots} removeFromArmy={this.removeFromArmy}/>
-        <BotCollection bots={this.state.allBots} addToArmy={this.addToArmy}/>
+        {
+          this.state.show ?
+          <BotSpecs bot={this.state.show} handleGoBack={this.handleGoBack} addToArmy={this.addToArmy} />
+          :
+          <BotCollection bots={this.state.allBots} handleShow={this.handleShow}/>
+        }
       </div>
     );
   }

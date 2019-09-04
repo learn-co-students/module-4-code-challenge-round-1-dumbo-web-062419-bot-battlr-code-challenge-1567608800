@@ -15,7 +15,7 @@ class BotCollection extends React.Component {
             <BotCard
               bot={bot}
               key={bot.id}
-              addToArmy={this.props.addToArmy} 
+              showOrRemove={this.props.handleShow}
           />)}
     		</div>
   	  </div>
